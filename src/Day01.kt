@@ -4,11 +4,16 @@ fun main() {
             if (index == 0) return@filterIndexed false
             s.toInt() > input[index - 1].toInt()
         }.count()
+
+        // better solution
+//        return input.map { it.toInt() }
+//            .zipWithNext()
+//            .count { it.first < it.second }
     }
 
     fun part2(input: List<String>): Int {
-       val summed = (1 until input.lastIndex).mapNotNull { index ->
-            if (index - 1 < 0 || index + 1 >input.lastIndex) {
+        val summed = (1 until input.lastIndex).mapNotNull { index ->
+            if (index - 1 < 0 || index + 1 > input.lastIndex) {
                 null
             } else {
                 listOf(
@@ -22,8 +27,13 @@ fun main() {
             if (index == 0) return@filterIndexed false
             s > summed[index - 1]
         }.count()
-    }
 
+        // better solution
+//        return input.map { it.toInt() }
+//            .windowed(3, 1) { it.sum() }
+//            .zipWithNext()
+//            .count { it.first < it.second }
+    }
 
 
     // test if implementation meets criteria from the description, like:
